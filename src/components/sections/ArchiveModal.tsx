@@ -8,7 +8,7 @@ const ARCHIVE = [
     { year: "2025", title: "PassGuard", description: "End-to-End encypted Password Manager", tools: "React, Tailwind, Firebase", github: "https://github.com/AdityaAryan-1408/PassGuard-App", deploy: "https://passguard-2aeb8.web.app/" },
     { year: "2025", title: "DevGuess", description: "Wordle Style word guessing game with varible word size", tools: "React", github: "https://github.com/AdityaAryan-1408/DevGuess", deploy: "#" },
     { year: "2025", title: "AI Chef", description: "Recipe generator for entered Ingredients using HuggingFace AI API", tools: "React, HuggingFace API", github: "https://github.com/AdityaAryan-1408/Ai-Chef", deploy: "#" },
-    { year: "2025", title: "ProFolio", description: "Professional Portfolio Website", tools: "Next.JS, TypeScript, Tailwind", github: "https://github.com/AdityaAryan-1408/ProFolio", deploy: "#" },
+    { year: "2025", title: "ProFolio", description: "Professional Portfolio Website", tools: "Next.JS, TypeScript, Tailwind", github: "https://github.com/AdityaAryan-1408/ProFolio", deploy: "https://aditya-aryan-portfolio.vercel.app/" },
 ];
 
 interface ArchiveModalProps {
@@ -32,7 +32,7 @@ export default function ArchiveModal({ isOpen, onClose }: ArchiveModalProps) {
         } else {
             document.body.style.overflow = "unset";
             gsap.to(modalRef.current, { opacity: 0, pointerEvents: "none", duration: 0.3 });
-            setActiveDescIndex(null); 
+            setActiveDescIndex(null);
         }
     }, [isOpen]);
 
@@ -58,7 +58,7 @@ export default function ArchiveModal({ isOpen, onClose }: ArchiveModalProps) {
                 <h2 className="font-display text-4xl mb-12 text-neon-lime">Archive_</h2>
 
                 <div className="w-full font-mono text-sm text-gray-400">
-                    
+
                     <div className="grid grid-cols-12 border-b border-gray-800 pb-4 mb-4 uppercase tracking-widest text-xs">
                         <div className="col-span-1">Year</div>
                         <div className="col-span-5 md:col-span-4">Project</div>
@@ -66,12 +66,12 @@ export default function ArchiveModal({ isOpen, onClose }: ArchiveModalProps) {
                         <div className="col-span-6 md:col-span-4 text-right">Links</div>
                     </div>
 
-                    
+
                     {ARCHIVE.map((item, i) => (
                         <div key={i} className="archive-row grid grid-cols-12 py-4 border-b border-gray-800/50 hover:bg-white/5 transition-colors items-center group relative">
                             <div className="col-span-1 text-neon-lime">{item.year}</div>
 
-                            
+
                             <div className="col-span-5 md:col-span-4 font-bold text-white relative">
                                 <button
                                     onClick={(e) => toggleDescription(i, e)}
