@@ -154,8 +154,8 @@ export default function ContactFooter() {
                     </button>
 
                     <div className="flex items-center gap-3 font-mono text-sm group text-black">
-                        <a href="mailto:aditya.aryan@example.com" className="underline decoration-1 underline-offset-4 hover:decoration-2 transition-all cursor-none uppercase font-bold">
-                            OR EMAIL: aryanaditya1486.com
+                        <a href="mailto:aryanaditya1486@gmail.com" className="underline decoration-1 underline-offset-4 hover:decoration-2 transition-all cursor-none uppercase font-bold">
+                            OR EMAIL: aryanaditya1486@gmail.com
                         </a>
                         <button onClick={handleCopy} className="hover:scale-110 transition-transform cursor-none opacity-60 group-hover:opacity-100" title="Copy Email">
                             {copied ? <Check size={16} /> : <Copy size={16} />}
