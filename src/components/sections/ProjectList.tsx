@@ -28,7 +28,7 @@ const PROJECTS = [
         title: "FetchQuest",
         category: "ReactJS, NodeJS, ExpressJS, MongoDB",
         year: "2025",
-        description: "A peer-to-peer delivery platform connecting travelers with senders. Features real-time tracking, secure escrow payments, and optimized route matching.",
+        description: "A peer-to-peer delivery platform connecting travelers with senders. Features real-time chat, reputation system and Admin dashboard for control and safety.",
         image: "/projects/fetchquest.png",
         github: "https://github.com/AdityaAryan-1408/FetchQuest",
         deploy: "https://fetch-quest-phi.vercel.app/",
