@@ -149,28 +149,58 @@ async function fetchCodeForces_Internal(username: string): Promise<PlatformStats
 
 async function fetchGFG_Internal(username: string): Promise<PlatformStats | null> {
     if (!username) return null;
+
     try {
-        const url = `https://www.geeksforgeeks.org/user/${username}/`;
-        const { data } = await axios.get(url, { headers: HEADERS });
+        // Method 1: Try the internal Practice API (Cleanest, returns JSON)
+        // We use the practiceapi endpoint which is often less protected than the main site
+        const apiUrl = `https://practiceapi.geeksforgeeks.org/api/v1/users/${username}/coding-stats`;
+        
+        const response = await axios.get(apiUrl, { 
+            headers: {
+                ...HEADERS,
+                // These headers are crucial to look like a real browser visiting the practice section
+                'Referer': 'https://practice.geeksforgeeks.org/',
+                'Origin': 'https://practice.geeksforgeeks.org',
+                'Host': 'practiceapi.geeksforgeeks.org'
+            }
+        });
 
-        let totalSolved = 0;
-        const jsonMatch = data.match(/total_problems_solved\D*(\d+)/);
-        const textMatch = data.match(/Problems Solved\D*(\d+)/i);
-
-        if (jsonMatch && jsonMatch[1]) totalSolved = parseInt(jsonMatch[1], 10);
-        else if (textMatch && textMatch[1]) totalSolved = parseInt(textMatch[1], 10);
+        // The API returns data like: { total_problems_solved: 150, ... }
+        const totalSolved = response.data?.total_problems_solved || 0;
 
         return {
             platform: "GeeksforGeeks",
             username,
             totalSolved,
             heatmap: {},
-            profileUrl: url
+            profileUrl: `https://www.geeksforgeeks.org/user/${username}/`
         };
 
     } catch (error) {
-        console.error(`Error fetching GFG for ${username}:`, (error as Error).message);
-        return { platform: "GeeksforGeeks", username, totalSolved: 0, heatmap: {}, profileUrl: `https://www.geeksforgeeks.org/user/${username}/` };
+        console.warn(`GFG API failed for ${username}, falling back to public wrapper...`);
+        try {
+            const wrapperUrl = `https://geeks-for-geeks-stats-api.vercel.app/?username=${username}`;
+            const wrapperRes = await axios.get(wrapperUrl);
+            
+            const solved = wrapperRes.data?.totalSolved || wrapperRes.data?.data?.totalSolved || 0;
+
+            return {
+                platform: "GeeksforGeeks",
+                username,
+                totalSolved: parseInt(solved, 10),
+                heatmap: {},
+                profileUrl: `https://www.geeksforgeeks.org/user/${username}/`
+            };
+        } catch (fallbackError) {
+            console.error(`All GFG fetch methods failed for ${username}:`, (fallbackError as Error).message);
+            return { 
+                platform: "GeeksforGeeks", 
+                username, 
+                totalSolved: 0, 
+                heatmap: {}, 
+                profileUrl: `https://www.geeksforgeeks.org/user/${username}/` 
+            };
+        }
     }
 }
 
