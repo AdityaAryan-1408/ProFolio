@@ -229,7 +229,7 @@ export const fetchCodeForces = unstable_cache(
 
 export const fetchGFG = unstable_cache(
     async (username: string) => fetchGFG_Internal(username),
-    ['gfg-stats-manual'], { revalidate: CACHE_DURATION }
+    ['gfg-stats-manual-v2'], { revalidate: CACHE_DURATION }
 );
 
 export const fetchCodeChef = unstable_cache(
