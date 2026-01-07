@@ -8,6 +8,7 @@ import { Github, Linkedin, Twitter, FolderGit2, ArrowRight } from "lucide-react"
 import clsx from "clsx";
 import axios from "axios";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 const SKILLS = [

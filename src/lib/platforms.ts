@@ -150,38 +150,17 @@ async function fetchCodeForces_Internal(username: string): Promise<PlatformStats
 async function fetchGFG_Internal(username: string): Promise<PlatformStats | null> {
     if (!username) return null;
 
-    try {
-        const targetUrl = `https://practiceapi.geeksforgeeks.org/api/v1/users/${username}/coding-stats`;
-        const apiKey = process.env.SCRAPER_API_KEY;
+    const solved = Number(process.env.GFG_SOLVED || 0);
 
-        // Construct the Proxy URL
-        // We ask ScraperAPI to fetch the target URL for us using a residential proxy
-        const proxyUrl = `http://api.scraperapi.com?api_key=${apiKey}&url=${encodeURIComponent(targetUrl)}`;
-
-        const response = await axios.get(proxyUrl);
-        
-        // ScraperAPI returns the JSON response from the target URL
-        const totalSolved = response.data?.total_problems_solved || 0;
-
-        return {
-            platform: "GeeksforGeeks",
-            username,
-            totalSolved,
-            heatmap: {},
-            profileUrl: `https://www.geeksforgeeks.org/user/${username}/`
-        };
-
-    } catch (error) {
-        console.error(`GFG Proxy Fetch failed:`, error);
-        return { 
-            platform: "GeeksforGeeks", 
-            username, 
-            totalSolved: 0, 
-            heatmap: {}, 
-            profileUrl: `https://www.geeksforgeeks.org/user/${username}/` 
-        };
-    }
+    return {
+        platform: "GeeksforGeeks",
+        username,
+        totalSolved: solved,
+        heatmap: {},
+        profileUrl: `https://www.geeksforgeeks.org/user/${username}/`
+    };
 }
+
 
 async function fetchCodeChef_Internal(username: string): Promise<PlatformStats | null> {
     if (!username) return null;
@@ -250,7 +229,7 @@ export const fetchCodeForces = unstable_cache(
 
 export const fetchGFG = unstable_cache(
     async (username: string) => fetchGFG_Internal(username),
-    ['gfg-stats-v2'], { revalidate: CACHE_DURATION }
+    ['gfg-stats-manual'], { revalidate: CACHE_DURATION }
 );
 
 export const fetchCodeChef = unstable_cache(
