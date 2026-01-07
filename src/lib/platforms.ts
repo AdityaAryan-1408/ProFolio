@@ -151,21 +151,16 @@ async function fetchGFG_Internal(username: string): Promise<PlatformStats | null
     if (!username) return null;
 
     try {
-        // Method 1: Try the internal Practice API (Cleanest, returns JSON)
-        // We use the practiceapi endpoint which is often less protected than the main site
-        const apiUrl = `https://practiceapi.geeksforgeeks.org/api/v1/users/${username}/coding-stats`;
-        
-        const response = await axios.get(apiUrl, { 
-            headers: {
-                ...HEADERS,
-                // These headers are crucial to look like a real browser visiting the practice section
-                'Referer': 'https://practice.geeksforgeeks.org/',
-                'Origin': 'https://practice.geeksforgeeks.org',
-                'Host': 'practiceapi.geeksforgeeks.org'
-            }
-        });
+        const targetUrl = `https://practiceapi.geeksforgeeks.org/api/v1/users/${username}/coding-stats`;
+        const apiKey = process.env.SCRAPER_API_KEY;
 
-        // The API returns data like: { total_problems_solved: 150, ... }
+        // Construct the Proxy URL
+        // We ask ScraperAPI to fetch the target URL for us using a residential proxy
+        const proxyUrl = `http://api.scraperapi.com?api_key=${apiKey}&url=${encodeURIComponent(targetUrl)}`;
+
+        const response = await axios.get(proxyUrl);
+        
+        // ScraperAPI returns the JSON response from the target URL
         const totalSolved = response.data?.total_problems_solved || 0;
 
         return {
@@ -177,30 +172,14 @@ async function fetchGFG_Internal(username: string): Promise<PlatformStats | null
         };
 
     } catch (error) {
-        console.warn(`GFG API failed for ${username}, falling back to public wrapper...`);
-        try {
-            const wrapperUrl = `https://geeks-for-geeks-stats-api.vercel.app/?username=${username}`;
-            const wrapperRes = await axios.get(wrapperUrl);
-            
-            const solved = wrapperRes.data?.totalSolved || wrapperRes.data?.data?.totalSolved || 0;
-
-            return {
-                platform: "GeeksforGeeks",
-                username,
-                totalSolved: parseInt(solved, 10),
-                heatmap: {},
-                profileUrl: `https://www.geeksforgeeks.org/user/${username}/`
-            };
-        } catch (fallbackError) {
-            console.error(`All GFG fetch methods failed for ${username}:`, (fallbackError as Error).message);
-            return { 
-                platform: "GeeksforGeeks", 
-                username, 
-                totalSolved: 0, 
-                heatmap: {}, 
-                profileUrl: `https://www.geeksforgeeks.org/user/${username}/` 
-            };
-        }
+        console.error(`GFG Proxy Fetch failed:`, error);
+        return { 
+            platform: "GeeksforGeeks", 
+            username, 
+            totalSolved: 0, 
+            heatmap: {}, 
+            profileUrl: `https://www.geeksforgeeks.org/user/${username}/` 
+        };
     }
 }
 
