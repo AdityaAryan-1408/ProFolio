@@ -12,8 +12,8 @@ const EXPERIENCES = [
         id: 1,
         role: "Web Developer Intern",
         company: "Shikom Solutions",
-        date: "Dec 2025 - PRESENT",
-        description: "Designing Web apps to run inside native ZOHO environment",
+        date: "Dec 2025 - Jan 2026",
+        description: "Designed Web apps to run inside native ZOHO environment, worked and shipped multiple widgets for Zoho CRM",
         tech: ["JavaScript", "Zoho CRM", "NodeJS",],
         type: "work"
     }

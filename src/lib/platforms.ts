@@ -150,7 +150,7 @@ async function fetchCodeForces_Internal(username: string): Promise<PlatformStats
 async function fetchGFG_Internal(username: string): Promise<PlatformStats | null> {
     if (!username) return null;
 
-    const solved = 385
+    const solved = 389
     
     return {
         platform: "GeeksforGeeks",
