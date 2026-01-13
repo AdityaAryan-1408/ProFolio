@@ -52,7 +52,7 @@ export default function Hero() {
                             About Me
                         </h2>
                         <p className="text-gray-300 leading-relaxed text-sm md:text-base font-light mb-6">
-                            I am Aditya Aryan, a Full Stack dev based in India.
+                            I am Aditya Aryan, a Full Stack MERN dev based in India. 
                             Bridging the gap between <strong className="text-neon-lime font-medium">backend efficiency</strong> and <strong className="text-neon-lime font-medium">frontend elegance</strong>,
                             I build systems that are not just functional, but beautiful.
                             Currently exploring the depths of GenAI and DevOps.
@@ -60,8 +60,8 @@ export default function Hero() {
 
                         <div className="flex justify-start md:justify-end">
                             <a
-                                href="/resume.pdf"
-                                download="Aditya_Aryan_Resume.pdf"
+                                href="/Aditya_Aryan_SDE_Resume.pdf"
+                                download="Aditya_Aryan_SDE_Resume.pdf"
                                 className="group flex items-center gap-3 px-5 py-2.5 border border-white/30 hover:border-neon-lime hover:bg-neon-lime/10 transition-all duration-300 rounded-md"
                             >
                                 <span className="font-mono text-xs font-bold tracking-widest text-white group-hover:text-neon-lime transition-colors uppercase cursor-none">

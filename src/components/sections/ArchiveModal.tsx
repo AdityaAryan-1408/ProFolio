@@ -5,10 +5,11 @@ import gsap from "gsap";
 import { ArrowUpRight, Github, X, Info } from "lucide-react";
 
 const ARCHIVE = [
-    { year: "2025", title: "PassGuard", description: "End-to-End encypted Password Manager", tools: "React, Tailwind, Firebase", github: "https://github.com/AdityaAryan-1408/PassGuard-App", deploy: "https://passguard-2aeb8.web.app/" },
-    { year: "2025", title: "DevGuess", description: "Wordle Style word guessing game with varible word size", tools: "React", github: "https://github.com/AdityaAryan-1408/DevGuess", deploy: "#" },
-    { year: "2025", title: "AI Chef", description: "Recipe generator for entered Ingredients using HuggingFace AI API", tools: "React, HuggingFace API", github: "https://github.com/AdityaAryan-1408/Ai-Chef", deploy: "#" },
+    { year: "2026", title: "GigFlow", description: "Full-stack freelance marketplace connecting clients and freelancers through secure bidding, atomic hiring transactions, and real-time notifications.", tools: "React, NodeJS, ExpressJS, MongoDB, SocketIO", github: "https://github.com/AdityaAryan-1408/GigFlow", deploy: "https://gig-flow-kappa-eight.vercel.app/" },
     { year: "2025", title: "ProFolio", description: "Professional Portfolio Website", tools: "Next.JS, TypeScript, Tailwind", github: "https://github.com/AdityaAryan-1408/ProFolio", deploy: "https://aditya-aryan-portfolio.vercel.app/" },
+    { year: "2025", title: "PassGuard", description: "End-to-End encypted Password Manager", tools: "React, Tailwind, Firebase", github: "https://github.com/AdityaAryan-1408/PassGuard-App", deploy: "https://passguard-2aeb8.web.app/" },
+    { year: "2025", title: "AI Chef", description: "Recipe generator for entered Ingredients using HuggingFace AI API", tools: "React, HuggingFace API", github: "https://github.com/AdityaAryan-1408/Ai-Chef", deploy: "#" },
+    { year: "2025", title: "DevGuess", description: "Wordle Style word guessing game with varible word size", tools: "React", github: "https://github.com/AdityaAryan-1408/DevGuess", deploy: "#" },
 ];
 
 interface ArchiveModalProps {
