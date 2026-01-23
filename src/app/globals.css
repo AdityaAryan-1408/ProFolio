@@ -22,10 +22,30 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
+  height: 8px;
 }
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #ccff00;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8e600;
+}
+
+::-webkit-scrollbar-corner {
+  background: #1a1a1a;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ccff00 #1a1a1a;
 }
 
 .cursor-ball {
