@@ -10,6 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 const EXPERIENCES = [
     {
         id: 1,
+        role: "Generative AI Research Intern",
+        company: "NS Apps Innovations",
+        date: "January 2026 - Present",
+        description: "Building GenAi powered applications and tools, including a GenAI-powered chatbot for Government of Bihar. Conducting research on the latest advancements in GenAI and applying them to real-world problems.",
+        tech: ["Python", "Langchain", "Transformers", "HuggingFace", "Groq", "GenAI", "LLMs"],
+        type: "work"
+    },
+    {
+        id: 2,
         role: "Web Developer Intern",
         company: "Shikom Solutions",
         date: "Dec 2025 - Jan 2026",
@@ -17,7 +26,6 @@ const EXPERIENCES = [
         tech: ["JavaScript", "Zoho CRM", "NodeJS",],
         type: "work"
     }
-
 ];
 
 const EDUCATION = [
@@ -145,7 +153,7 @@ export default function Experience() {
                         >
                             <div className="absolute top-1/2 left-[-6px] w-3 h-3 bg-black border border-neon-lime rounded-full transform -translate-y-1/2 group-hover:bg-neon-lime transition-colors duration-300 shadow-[0_0_10px_rgba(204,255,0,0.3)]"></div>
 
-                            <div className="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 hover:border-neon-lime transition-all duration-300 hover:bg-white/5 relative group-hover:-translate-y-2 h-full">
+                            <div className="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 hover:border-neon-lime transition-all duration-300 relative group-hover:-translate-y-2 h-full">
 
                                 <div className="flex justify-between items-start mb-6 border-b border-white/10 pb-6">
                                     <div>
@@ -169,7 +177,7 @@ export default function Experience() {
 
                                 <div className="flex flex-wrap gap-2">
                                     {item.tech.map((t, i) => (
-                                        <span key={i} className="text-[10px] font-mono border border-neon-lime/30 text-neon-lime/70 px-2 py-1 uppercase hover:bg-neon-lime hover:text-black transition-colors cursor-default">
+                                        <span key={i} className="text-[10px] font-mono border border-neon-lime/30 text-neon-lime/70 px-2 py-1 uppercase hover:bg-neon-lime hover:text-black transition-colors cursor-none">
                                             {t}
                                         </span>
                                     ))}
