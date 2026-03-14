@@ -12,7 +12,7 @@ const EXPERIENCES = [
         id: 1,
         role: "Generative AI Research Intern",
         company: "NS Apps Innovations",
-        date: "January 2026 - Present",
+        date: "January 2026 - March - 2026",
         description: "Building GenAi powered applications and tools, including a GenAI-powered chatbot for Government of Bihar. Conducting research on the latest advancements in GenAI and applying them to real-world problems.",
         tech: ["Python", "Langchain", "Transformers", "HuggingFace", "Groq", "GenAI", "LLMs"],
         type: "work"
