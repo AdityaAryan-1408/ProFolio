@@ -139,7 +139,7 @@ async function fetchCodeForces_Internal(username: string): Promise<PlatformStats
         return {
             platform: "CodeForces",
             username,
-            totalSolved: solvedSet.size,
+            totalSolved: Math.max(solvedSet.size, 220),
             ranking: rankingStr,
             heatmap,
             profileUrl: `https://codeforces.com/profile/${username}`
@@ -150,7 +150,7 @@ async function fetchCodeForces_Internal(username: string): Promise<PlatformStats
 async function fetchGFG_Internal(username: string): Promise<PlatformStats | null> {
     if (!username) return null;
 
-    const solved = 479;
+    const solved = 575;
     
     return {
         platform: "GeeksforGeeks",
@@ -202,42 +202,42 @@ async function fetchHackerRank_Internal(username: string): Promise<PlatformStats
     return {
         platform: "HackerRank",
         username,
-        totalSolved: 121,
+        totalSolved: 73,
         heatmap: {},
         profileUrl: `https://www.hackerrank.com/${username}`
     };
 }
 
 
-const CACHE_DURATION = 86400;
+const CACHE_DURATION = 3600;
 
 export const fetchLeetCode = unstable_cache(
     async (username: string) => fetchLeetCode_Internal(username),
-    ['leetcode-stats-v2'], { revalidate: CACHE_DURATION }
+    ['leetcode-stats-v3'], { revalidate: CACHE_DURATION }
 );
 
 export const fetchGitHub = unstable_cache(
     async (username: string) => fetchGitHub_Internal(username),
-    ['github-stats-v5'],
+    ['github-stats-v6'],
     { revalidate: CACHE_DURATION }
 );
 export const fetchCodeForces = unstable_cache(
     async (username: string) => fetchCodeForces_Internal(username),
-    ['codeforces-stats-v3'],
+    ['codeforces-stats-v4'],
     { revalidate: CACHE_DURATION }
 );
 
 export const fetchGFG = unstable_cache(
     async (username: string) => fetchGFG_Internal(username),
-    ['gfg-stats-manual-v2'], { revalidate: CACHE_DURATION }
+    ['gfg-stats-manual-v3'], { revalidate: CACHE_DURATION }
 );
 
 export const fetchCodeChef = unstable_cache(
     async (username: string) => fetchCodeChef_Internal(username),
-    ['codechef-stats-v2'], { revalidate: CACHE_DURATION }
+    ['codechef-stats-v3'], { revalidate: CACHE_DURATION }
 );
 
 export const fetchHackerRank = unstable_cache(
     async (username: string) => fetchHackerRank_Internal(username),
-    ['hackerrank-stats-static'], { revalidate: CACHE_DURATION }
+    ['hackerrank-stats-static-v2'], { revalidate: CACHE_DURATION }
 );
