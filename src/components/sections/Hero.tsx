@@ -61,7 +61,7 @@ export default function Hero() {
                         <div className="flex justify-start md:justify-end">
                             <a
                                 href="/Aditya_Aryan_Resume.pdf"
-                                download="Aditya_Aryan_SDE_Resume.pdf"
+                                download="Aditya_Aryan_Resume.pdf"
                                 className="group flex items-center gap-3 px-5 py-2.5 border border-white/30 hover:border-neon-lime hover:bg-neon-lime/10 transition-all duration-300 rounded-md"
                             >
                                 <span className="font-mono text-xs font-bold tracking-widest text-white group-hover:text-neon-lime transition-colors uppercase cursor-none">
